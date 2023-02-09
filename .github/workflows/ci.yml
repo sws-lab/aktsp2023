@@ -1,0 +1,42 @@
+name: ci
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  build:
+    strategy:
+      fail-fast: false
+
+      matrix:
+        os:
+          - ubuntu-latest
+        ocaml-compiler:
+          - 4.14.1 # matches opam lock file
+          # don't add any other because they won't be used
+
+    runs-on: ${{ matrix.os }}
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up OCaml ${{ matrix.ocaml-compiler }}
+        env:
+          # otherwise setup-ocaml pins non-locked dependencies
+          # https://github.com/ocaml/setup-ocaml/issues/166
+          OPAMLOCKED: locked
+        uses: ocaml/setup-ocaml@v2
+        with:
+          ocaml-compiler: ${{ matrix.ocaml-compiler }}
+
+      - name: Install dependencies
+        run: opam install . --deps-only --locked --with-test
+
+      - name: Build
+        run: opam exec -- dune build
+
+      - name: Run hello
+        run: opam exec -- dune exec src/hello/hello.exe
