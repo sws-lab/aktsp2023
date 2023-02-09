@@ -16,6 +16,11 @@
 6. Käivita: `opam init -a --bare -y`
 7. Käivita: `opam switch create --deps-only --locked -y .` (NB! punkt)
 
+### Paigalduse kontrollimine
+1. Käivita: `eval $(opam env)`
+2. Käivita: `dune exec src/hello/hello.exe`
+    * Väljund peaks olema `Hello, OCaml!`.
+
 
 ## Kasutamine
 1. Navigeeri käsureal kloonitud projekti repositooriumi kausta.
