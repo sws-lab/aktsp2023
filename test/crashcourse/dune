@@ -1,0 +1,4 @@
+(test
+ (name crashcourse_test)
+ (libraries ounit2 crashcourse)
+ (preprocess (pps ppx_deriving.std ppx_deriving_hash)))
