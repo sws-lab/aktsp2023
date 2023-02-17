@@ -42,7 +42,7 @@ let example_int_tree = Leaf 1
          /   \
        .       .
       / \     / \
-    'a' 'b' 'a' 'b' *)
+    'a' 'b' 'b' 'a' *)
 let example_char_tree = Leaf 'a'
 
 
