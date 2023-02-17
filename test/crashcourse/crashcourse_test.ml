@@ -7,4 +7,4 @@ let tests =
     Collections_test.tests;
   ]
 
-let () = run_test_tt_main tests
+let () = run_test_tt_main (OUnitTodo.wrap tests)
