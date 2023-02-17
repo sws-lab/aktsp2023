@@ -8,7 +8,10 @@ type color =
 (** Näide:
     Teisendab värvi sõneks, vastavalt "R", "G" ja "B". *)
 let show_color (c: color): string =
-  failwith "TODO"
+  match c with
+  | Red -> "R"
+  | Green -> "G"
+  | Blue -> "B"
 
 (** Ülesanne:
     Teisendab sõne värviks. show_color pöördfunktsioon.
@@ -35,15 +38,38 @@ type 'a tree =
       .   4
      / \
     2   3 *)
-let example_int_tree = Leaf 1
+let example_int_tree =
+  Branch (
+    Leaf 1,
+    Branch (
+      Branch (
+        Branch (
+          Leaf 2,
+          Leaf 3
+        ),
+        Leaf 4
+      ),
+      Leaf 5
+    )
+  )
 
 (** Ülesanne:
            .
          /   \
        .       .
       / \     / \
-    'a' 'b' 'a' 'b' *)
-let example_char_tree = Leaf 'a'
+    'a' 'b' 'b' 'a' *)
+let example_char_tree =
+  Branch (
+    Branch (
+      Leaf 'a',
+      Leaf 'b'
+    ),
+    Branch (
+      Leaf 'b',
+      Leaf 'a'
+    )
+  )
 
 
 (** Näited. *)
@@ -51,16 +77,23 @@ let example_char_tree = Leaf 'a'
 (** Arvutab puu kõrguse. Lehe kõrgus on 0.
     Vihje: Kasuta max funktsiooni. *)
 let rec height (t: 'a tree): int =
-  failwith "TODO"
+  match t with
+  | Leaf _ -> 0
+  | Branch (l, r) -> 1 + max (height l) (height r)
 
 (** Teisendab puu sõneks. Vt teste.
     Vihje: Sõnede konkateneerimise operaator on ^. *)
 let rec show_tree (show_leaf: 'a -> string) (t: 'a tree): string =
-  failwith "TODO"
+  match t with
+  | Leaf x -> show_leaf x
+  | Branch (l, r) ->
+    "(" ^ show_tree show_leaf l ^ " " ^ show_tree show_leaf r ^ ")"
 
 (** Rakendab funktsooni puu lehtedele. *)
 let rec tree_map (f: 'a -> 'b) (t: 'a tree): 'b tree =
-  failwith "TODO"
+  match t with
+  | Leaf x -> Leaf (f x)
+  | Branch (l, r) -> Branch (tree_map f l, tree_map f r)
 
 
 (** Ülesanded. *)

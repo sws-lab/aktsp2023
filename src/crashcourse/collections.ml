@@ -7,19 +7,23 @@ open Types
 (** Teisendab puu elementide listiks (keskjärjestuses).
     Vihje: Listide konkateneerimise operaator on @. *)
 let rec list_of_tree (t: 'a tree): 'a list =
-  failwith "TODO"
+  match t with
+  | Leaf x -> [x]
+  | Branch (l, r) -> list_of_tree l @ list_of_tree r
 
 (** Suurendab täisarvude listi elemente ühe võrra. *)
 let list_inc (xs: int list): int list =
-  failwith "TODO"
+  List.map (fun x -> x + 1) xs
 
 (** Jätab täisarvude listist alles elemendid, mis on vähemalt 4. *)
 let list_big (xs: int list): int list =
-  failwith "TODO"
+  List.filter (fun x -> x >= 4) xs
 
 (** Liidab kokku täisarvude listi elemendid. *)
 let list_sum (xs: int list): int =
-  failwith "TODO"
+  List.fold_left (fun acc x ->
+      acc + x
+    ) 0 xs
 
 (** Liidab kokku täisarvude listi elemendid.
     Imperatiivsem lahendus. *)
@@ -65,7 +69,9 @@ module IntSet = Set.Make (Int)
     Vihje: IntSet.singleton.
     Vihje: IntSet.union. *)
 let rec intset_of_tree (t: int tree): IntSet.t =
-  failwith "TODO"
+  match t with
+  | Leaf x -> IntSet.singleton x
+  | Branch (l, r) -> IntSet.union (intset_of_tree l) (intset_of_tree r)
 
 
 (** Puu elementide mooduli tüüp/signatuur. *)
