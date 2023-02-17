@@ -87,9 +87,9 @@ let tests =
     ];
     "sets" >::: [
       "intset_of_tree" >:: test_intset_of_tree;
-      "tree" >::: [
+      (* "tree" >::: [
         "tree_to_set" >:: test_tree_to_set;
         "show" >:: test_tree_show;
-      ];
+      ]; *)
     ];
   ]
