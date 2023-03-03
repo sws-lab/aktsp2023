@@ -7,8 +7,12 @@
 module Make (D: sig type t [@@deriving eq] end) =
 struct
   (** Leiab funktsiooni püsipunkti alustades iteratsiooni antud väärtusest. *)
-  let fp (f: D.t -> D.t) (initial: D.t): D.t =
-    failwith "TODO"
+  let rec fp (f: D.t -> D.t) (initial: D.t): D.t =
+    let next = f initial in
+    if D.equal initial next then
+      initial
+    else
+      fp f next
 end
 
 (** Püsipunktid üle hulkade. *)
@@ -19,12 +23,12 @@ struct
   (** Leiab funktsiooni vähima püsipunkti.
       Kasutada fp funktsiooni. *)
   let lfp (f: D.t -> D.t): D.t =
-    failwith "TODO"
+    fp f D.empty
 
   (** Leiab funktsiooni sulundi, mis sisaldab antud väärtusi.
       Kasutada lfp funktsiooni. *)
   let closure (f: D.t -> D.t) (initial: D.t): D.t =
-    failwith "TODO"
+    lfp (fun x -> D.union initial (f x))
 end
 
 

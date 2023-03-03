@@ -98,10 +98,15 @@ struct
 
   (** Teisendab puu hulgaks. *)
   let rec to_set (t: element tree): Set.t =
-    failwith "TODO"
+    match t with
+    | Leaf x -> Set.singleton x
+    | Branch (l, r) -> Set.union (to_set l) (to_set r)
 
   (** Teisendab puu sõneks.
       Vihje: Element.show. *)
   let rec show (t: 'a tree): string =
-    failwith "TODO"
+    match t with
+    | Leaf x -> Element.show x
+    | Branch (l, r) ->
+      "(" ^ show l ^ " " ^ show r ^ ")"
 end
