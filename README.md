@@ -10,6 +10,7 @@
     * MacOS: paigalda [homebrew](https://brew.sh/).
 2. Paigalda [opam](https://opam.ocaml.org/doc/Install.html).
 3. Paigalda [Visual Studio Code](https://code.visualstudio.com/) ja [OCaml Platform laiendus](https://marketplace.visualstudio.com/items?itemName=ocamllabs.ocaml-platform).
+    * Kui kasutad WSL-i, siis paigalda ka [WSL laiendus](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-wsl).
 4. [Git](https://git-scm.com/downloads)-iga klooni [see repositoorium](https://github.com/sws-lab/aktsp2023).
     * NB! Windows-is klooni repositoorium WSL-i sees, mitte väljaspool, sest muidu toimub OCaml-i kompileerimine väga aeglaselt.
 5. Navigeeri käsureal kloonitud repositooriumi kausta.

@@ -1,0 +1,4 @@
+(library
+ (name modelcheck)
+ (libraries fixpoint)
+ (preprocess (pps ppx_deriving.std)))

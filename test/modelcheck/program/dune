@@ -1,0 +1,4 @@
+(test
+ (name program_test)
+ (libraries ounit2 ounittodo modelcheck modelcheck_program)
+ (preprocess (pps ppx_deriving.std)))

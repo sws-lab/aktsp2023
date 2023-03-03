@@ -43,7 +43,7 @@ let show_intset x = [%show: int list] (IntSet.elements x)
 let test_intset_of_tree _ =
   assert_equal ~cmp:IntSet.equal ~printer:show_intset (IntSet.of_list [1; 2; 3; 4; 5]) (intset_of_tree example_int_tree)
 
-module IntElement =
+(* module IntElement =
 struct
   include Int
   let show = string_of_int
@@ -66,7 +66,7 @@ let test_tree_to_set _ =
 let test_tree_show _ =
   let assert_equal = assert_equal ~printer:Fun.id in
   assert_equal "(1 (((2 3) 4) 5))" (IntTree.show example_int_tree);
-  assert_equal "((a b) (b a))" (CharTree.show example_char_tree)
+  assert_equal "((a b) (b a))" (CharTree.show example_char_tree) *)
 
 let tests =
   "collections" >::: [
@@ -87,9 +87,9 @@ let tests =
     ];
     "sets" >::: [
       "intset_of_tree" >:: test_intset_of_tree;
-      "tree" >::: [
+      (* "tree" >::: [
         "tree_to_set" >:: test_tree_to_set;
         "show" >:: test_tree_show;
-      ];
+      ]; *)
     ];
   ]

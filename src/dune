@@ -1,0 +1,3 @@
+(env
+ (dev
+  (flags (:standard -w -unused-var-strict -w -unused-value-declaration -w -unused-rec-flag -w -unused-constructor))))

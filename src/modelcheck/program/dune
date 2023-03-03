@@ -1,0 +1,4 @@
+(library
+ (name modelcheck_program)
+ (libraries modelcheck crashcourse)
+ (preprocess (pps ppx_deriving.std)))
