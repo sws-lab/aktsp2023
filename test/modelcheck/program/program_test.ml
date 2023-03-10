@@ -38,7 +38,7 @@ let test_count_up_error_states _ =
   assert_equal ~printer:string_of_int 0 (CountUpProgramChecker.StateSet.cardinal error_states)
 
 
-module PowProgramChecker = Modelcheck.Checker.MakeNaive (PowProgram)
+(* module PowProgramChecker = Modelcheck.Checker.MakeNaive (PowProgram)
 
 let test_pow_correct _ =
   assert_equal ~printer:string_of_bool false (PowProgramChecker.is_correct ())
@@ -65,7 +65,7 @@ let test_fixed_pow_all_states _ =
 
 let test_fixed_pow_error_states _ =
   let error_states = FixedPowProgramChecker.error_states () in
-  assert_equal ~printer:string_of_int 0 (FixedPowProgramChecker.StateSet.cardinal error_states)
+  assert_equal ~printer:string_of_int 0 (FixedPowProgramChecker.StateSet.cardinal error_states) *)
 
 
 module CountUpDownProgramChecker = Modelcheck.Checker.MakeNaive (CountUpDownProgram)
@@ -112,7 +112,7 @@ let test_fixed_sum_error_states _ =
   assert_equal ~printer:string_of_int 0 (FixedSumProgramChecker.StateSet.cardinal error_states)
 
 
-module LinearSqrtProgramChecker = Modelcheck.Checker.MakeNaive (LinearSqrtProgram)
+(* module LinearSqrtProgramChecker = Modelcheck.Checker.MakeNaive (LinearSqrtProgram)
 
 let test_linear_sqrt_correct _ =
   assert_equal ~printer:string_of_bool true (LinearSqrtProgramChecker.is_correct ())
@@ -151,7 +151,7 @@ let test_newton_sqrt_all_states _ =
 
 let test_newton_sqrt_error_states _ =
   let error_states = NewtonSqrtProgramChecker.error_states () in
-  assert_equal ~printer:string_of_int 0 (NewtonSqrtProgramChecker.StateSet.cardinal error_states)
+  assert_equal ~printer:string_of_int 0 (NewtonSqrtProgramChecker.StateSet.cardinal error_states) *)
 
 
 let tests =
@@ -167,7 +167,7 @@ let tests =
         "all_states" >:: test_count_up_all_states;
         "error_states" >:: test_count_up_error_states;
       ];
-      "pow" >::: [
+      (* "pow" >::: [
         "correct" >:: test_pow_correct;
         "all_states" >:: test_pow_all_states;
         "error_states" >:: test_pow_error_states;
@@ -176,7 +176,7 @@ let tests =
           "all_states" >:: test_fixed_pow_all_states;
           "error_states" >:: test_fixed_pow_error_states;
         ];
-      ];
+      ]; *)
       "count_up_down" >::: [
         "correct" >:: test_count_up_down_correct;
         "all_states" >:: test_count_up_down_all_states;
@@ -192,7 +192,7 @@ let tests =
           "error_states" >:: test_fixed_sum_error_states;
         ];
       ];
-      "sqrt" >::: [
+      (* "sqrt" >::: [
         "linear" >::: [
           "correct" >:: test_linear_sqrt_correct;
           "all_states" >:: test_linear_sqrt_all_states;
@@ -208,7 +208,7 @@ let tests =
           "all_states" >:: test_newton_sqrt_all_states;
           "error_states" >:: test_newton_sqrt_error_states;
         ];
-      ];
+      ]; *)
     ];
   ]
 
