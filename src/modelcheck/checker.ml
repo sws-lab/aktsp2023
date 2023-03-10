@@ -7,23 +7,26 @@ struct
   module StateSet = Set.Make (Model)
   module StateSetFP = Fixpoint.MakeSet (StateSet)
 
-
+  let f (states: StateSet.t): StateSet.t =
+    StateSet.elements states
+    |> List.concat_map Model.step
+    |> StateSet.of_list
 
   (** Tagastab kõik saavutatavad olekud. *)
   let all_states (): StateSet.t =
-    failwith "TODO"
+    StateSetFP.closure f (StateSet.singleton Model.initial)
 
   (** Tagastab kõik saavutatavad veaolekud. *)
   let error_states (): StateSet.t =
-    failwith "TODO"
+    StateSet.filter Model.is_error (all_states ())
 
   (** Kas mõni veaolek on saavutatav? *)
   let has_error (): bool =
-    failwith "TODO"
+    not (StateSet.is_empty (error_states ()))
 
   (** Kas veaolekud on mittesaavutatavad? *)
   let is_correct (): bool =
-    failwith "TODO"
+    not (has_error ())
 end
 
 
